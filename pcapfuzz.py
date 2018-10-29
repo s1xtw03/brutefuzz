@@ -46,7 +46,8 @@ def main():
 
   #read in files
   packet_templates = rdpcap(args.pcap)
-  fuzzstrings = open(args.fuzz_file).readlines()
+  if args.mode != 'R':
+    fuzzstrings = open(args.fuzz_file).readlines()
   iindex = args.inject_index
 
   #select desired packets
@@ -101,7 +102,7 @@ def main():
       #string replace uses regular expression to find and replace
       if args.mode == 'S':
         encoded_original_string = args.string.encode(encoding)
-        malicious = re.sub(encoded_original_string, encoded_fuzz, raw_data)
+        malicious = re.sub(encoded_original_string, re.escape(encoded_fuzz), raw_data)
         sr_try(malicious)
       #######################
 
@@ -342,7 +343,7 @@ Quick examples:
 Replay: ./pcapfuzz.py -m R -p x.pcap --target 127.0.0.1 --simulate
 Inject: ./pcapfuzz.py -vvv -m I -p x.pcap -f x.txt --inject_index 10 -n 3 
 Brutefuzz: ./pcapfuzz.py -vvv --mode B --pcap x.pcap --fuzz x.txt -o outfile.txt
-String Replace: ./pcapfuzz.py -vvv --m S -packet_number 3 -p x.pcap --string GET"""
+String Replace: ./pcapfuzz.py -vvv -m S --packet_number 3 --fuzz x.txt -p x.pcap --string GET"""
 
   p = argparse.ArgumentParser(description=desc, formatter_class=argparse.RawTextHelpFormatter)
   p.add_argument('--pcap', 
