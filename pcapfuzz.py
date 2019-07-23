@@ -27,7 +27,7 @@ import binascii
 try: 
   from scapy.all import *
 except ImportError:
-  print("wooops, I need scapy!\ntry: pip3 install scapy")
+  print("wooops, I need scapy\ntry: pip3 install scapy")
   sys.exit(0)
   
 
