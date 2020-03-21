@@ -308,7 +308,7 @@ def parse_packet(packet_template, args):
 
     if confidence < 1.0:
       logging.error("Not sure about the packet encoding.")
-      logging.error("Trying " + encoding + "with confidence " + confidence)
+      logging.error("Trying " + encoding + " with confidence " + str(confidence))
 
     host_str = dst_host + ':' + str(dst_port)
     return host_str, bytes(raw_data)
