@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 #####################################################################
-# pcapfuzz is a program for attacking services using a packet 
+# brutefuzz is a program for attacking services using a packet 
 # capture as a template. it helps inject fuzzy strings via 
 # three different modes, and offers varying levels of verbosity.
 #
@@ -230,7 +230,7 @@ def fresh_socket():
 def print_byte_dump(raw_bytes):
   logging.info("".join(map(chr, raw_bytes)))
 
-#Annoyingly, scapy's hexdump just calls print instead of 
+#grrr, scapy's hexdump just calls print instead of 
 #returning a string. soooooooo here's the workaround
 def print_wrap_supreme(raw_bytes, level):
   global hexout
@@ -261,7 +261,7 @@ def hexdump2(x):
     print_to_string(sane_color2(x[i:i+16]))
     i += 16
 
-#Annoyingly, scapy's hexdump just calls print instead of 
+#grrr, scapy's hexdump just calls print instead of 
 #returning a string. soooooooo here's the workaround
 def sane_color2(x):
   r=""
@@ -273,7 +273,7 @@ def sane_color2(x):
       r=r+(chb(i).decode('ascii'))
   return r
 
-#Annoyingly, scapy's hexdump just calls print instead of 
+#grrr, scapy's hexdump just calls print instead of 
 #returning a string. soooooooo here's the workaround
 def print_to_string(*args, **kwargs):
   global hexout
@@ -340,10 +340,10 @@ def input_handler():
   desc = """Layer 5+ Fuzzer
 
 Quick examples:
-Replay: ./pcapfuzz.py -m R -p x.pcap --target 127.0.0.1 --simulate
-Inject: ./pcapfuzz.py -vvv -m I -p x.pcap -f x.txt --inject_index 10 -n 3 
-Brutefuzz: ./pcapfuzz.py -vvv --mode B --pcap x.pcap --fuzz x.txt -o outfile.txt
-String Replace: ./pcapfuzz.py -vvv -m S --packet_number 3 --fuzz x.txt -p x.pcap --string GET"""
+Replay: ./brutefuzz.py -m R -p x.pcap --target 127.0.0.1 --simulate
+Inject: ./brutefuzz.py -vvv -m I -p x.pcap -f x.txt --inject_index 10 -n 3 
+Brutefuzz: ./brutefuzz.py -vvv --mode B --pcap x.pcap --fuzz x.txt -o outfile.txt
+String Replace: ./brutefuzz.py -vvv -m S --packet_number 3 --fuzz x.txt -p x.pcap --string GET"""
 
   p = argparse.ArgumentParser(description=desc, formatter_class=argparse.RawTextHelpFormatter)
   p.add_argument('--pcap', 
