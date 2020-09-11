@@ -76,3 +76,7 @@ To demonstrate, the following will brute force a string across an HTTP GET reque
 0020   74 3A 20 77 77 77 2E 65  74 68 65 72 65 61 6C 2E   t: www.ethereal.
 0030   63 6F 6D 0D 0A 55 73 65  72 2D 41 67 65 6E 74 3A   com..User-Agent:
 ~~~
+
+The fuzzing proceeds in the manner above, until the payload has been sent in each position. It then moves onto the next fuzz payload in the input file, and later to subsequent packets in the .cap file.
+
+Run `brutefuzz.py -h` for a full list of options.
