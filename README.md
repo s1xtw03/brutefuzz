@@ -29,7 +29,7 @@ To demonstrate, the following will brute force a string across an HTTP GET reque
 2020-09-10 23:16:59,892 Fuzz string: hello
 
 2020-09-10 23:17:02,897 Not seeing a banner: 127.0.0.1:80
-2020-09-10 23:17:03,902 
+2020-09-10 23:17:03,902 Outbound data:
 0000   68 65 6C 6C 6F 64 6F 77  6E 6C 6F 61 64 2E 68 74   hellodownload.ht
 0010   6D 6C 20 48 54 54 50 2F  31 2E 31 0D 0A 48 6F 73   ml HTTP/1.1..Hos
 0020   74 3A 20 77 77 77 2E 65  74 68 65 72 65 61 6C 2E   t: www.ethereal.
